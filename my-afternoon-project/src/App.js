@@ -10,6 +10,7 @@ export default class App extends Component {
       dataDisplayIndex: 0
     }
     this.handlePrevious = this.handlePrevious.bind(this)
+    this.handleNext = this.handleNext.bind(this)
   }
 
   handlePrevious() {
@@ -17,7 +18,7 @@ export default class App extends Component {
       this.setState({
         dataDisplayIndex: data.length - 1
       })
-  }
+    }
     else {
       this.setState({
         dataDisplayIndex: this.state.dataDisplayIndex - 1
@@ -27,9 +28,19 @@ export default class App extends Component {
   }
 
 
-  // handleNext() {
-
-  // }
+  handleNext() {
+    if (this.state.dataDisplayIndex === data.length - 1) {
+      this.setState({
+        dataDisplayIndex: 0
+      })
+    }
+    else {
+      this.setState({
+        dataDisplayIndex: this.state.dataDisplayIndex + 1
+      })
+    }
+    console.log(this.state.dataDisplayIndex)
+  }
 
   render() {
     console.log(data)
@@ -81,7 +92,7 @@ export default class App extends Component {
                 <button className='Delete'>Delete</button>
                 <button className='New'>New</button>
               </div>
-              <button className='Next'>Next</button>
+              <button className='Next' onClick={this.handleNext}>Next</button>
             </div>
           </div>
         </div>
